@@ -1,9 +1,8 @@
-function! RunBruCommand(...)
-    let command = 'bru ' . a:1
-    for arg in a:000[1:]
-        let command .= ' ' . arg
-    endfor
+local function run_bru()
+	local file = vim.fn.expand("%:p")
+	print("my file is " .. file)
+end
 
-" Define a command to run Bru commands "
-command! -nargs=* bru call RunBruCommand(<f-args>)
-
+return {
+	run_bru = run_bru
+}
